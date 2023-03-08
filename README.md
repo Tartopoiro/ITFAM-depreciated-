@@ -1,4 +1,6 @@
-# ITFAM
+# ITFAM - AccountX
+
+DISCLAIMER : AccountX n'est pas en mesure de vous permettre de faire votre comptabilité à ce jour. Si vous souhaitez utiliser ce projet, aucun service d'assistance ne vous sera dédié. La fiabilité du projet ne peut être garantie. La sécurité du projet peut être compromise. 
 
 NOTE : AccountX.odt présente des informations supplémentaires sur la structure du projet et ses fonctionnalités. Il est conseillé de consulter ce document. 
 
@@ -8,15 +10,15 @@ Setup
 
 1/ Utiliser git clone ou dwnld un zip pour obtenir le projet
 
-2/ Telecherger toutes les sources avec maven spécifiés dans le pom.xml 
+2/ Telecharger toutes les sources avec maven spécifiés dans le pom.xml 
 
-3/ Configurer le serveur et utiliser "domain1"
+3/ Configurer le serveur glassfish 7.0 et utiliser "domain1" (doit être dans le meme dossier que accountX)
 
 
 
 Initialisation de BDD
 
-1/ Creer la base de données avec le fichier structure
+1/ Creer la base de données sous MySQL avec le fichier structure
 
 2/ Completer la BDD avec le fichier de contenu 
 
