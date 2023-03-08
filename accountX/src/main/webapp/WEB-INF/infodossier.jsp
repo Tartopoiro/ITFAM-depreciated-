@@ -23,7 +23,7 @@
 
 <main>
 
-    <form method="post" action="contact" class="centeredContainer">
+    <form method="post" action="info" class="centeredContainer">
         <fieldset>
             <legend> Changement de contact </legend>
             <table>
