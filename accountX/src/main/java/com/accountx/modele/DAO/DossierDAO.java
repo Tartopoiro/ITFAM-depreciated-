@@ -3,6 +3,7 @@ package com.accountx.modele.DAO;
 import com.accountx.modele.Connexion;
 import com.accountx.modele.entite.Dossier;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.CallableStatement;

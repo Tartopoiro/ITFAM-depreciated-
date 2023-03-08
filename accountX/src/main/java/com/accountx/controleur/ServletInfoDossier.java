@@ -1,6 +1,7 @@
 package com.accountx.controleur;
 
 
+import com.accountx.modele.DAO.AdresseDAO;
 import com.accountx.modele.DAO.DossierDAO;
 import com.accountx.modele.entite.Adresse;
 import com.accountx.modele.entite.Dossier;
@@ -18,7 +19,6 @@ public class ServletInfoDossier extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = "/WEB-INF/infodossier.jsp";
-
         request.getRequestDispatcher(url).forward(request,response);
     }
 
@@ -55,8 +55,10 @@ public class ServletInfoDossier extends HttpServlet {
         httpSession.setAttribute("dossier",dossier);
         //modification dans de la BDD
         DossierDAO dossierDAO = new DossierDAO();
+        AdresseDAO adresseDAO = new AdresseDAO();
         try {
             dossierDAO.insert(dossier);
+            adresseDAO.insert(dossier.getAdresse());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
