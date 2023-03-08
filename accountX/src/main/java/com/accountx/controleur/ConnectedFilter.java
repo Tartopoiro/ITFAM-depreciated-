@@ -23,8 +23,6 @@ public class ConnectedFilter implements Filter {
         HttpServletRequest requestFilter = (HttpServletRequest) request;
         HttpServletResponse responseFilter = (HttpServletResponse) response;
         HttpSession httpSession = requestFilter.getSession();
-        Logger logger = Logger.getLogger(getClass().getName());
-        logger.info("infodev --> connectedfilter is on");
 
         if (httpSession.getAttribute("utilisateur")==null){
             responseFilter.sendRedirect("/accountx/login");

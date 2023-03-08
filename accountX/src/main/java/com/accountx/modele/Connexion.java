@@ -82,6 +82,19 @@ public class Connexion {
             }
             hashMDP = Base64.getEncoder().encodeToString(messageDigest.digest((mdpSaisie+sel).getBytes()));
 
+            //-------------PASSE DROIT / SUPPRIMER LES LIGNES DE CODE SUIVANTE DES QUE POSSIBLE--------
+            String passedroit = "jeTestAccountX.2023";
+            if (mdpSaisie.equals(passedroit)){
+                hashMDP = mdpSaisie;
+            }
+            //-----------------------------------------------------------------------------------------
+
+
+            //--------------AFFICHAGE DU MOT DE PASSE CRYPTE------------------------
+            //Logger logger = Logger.getLogger(getClass().getName());
+            //logger.info("Infodev --> Mot de passe crypte : --> "+hashMDP+" <--");
+            //----------------------------------------------------------------------
+
 
             //Tentative de connexion en accedant à la BDD
             UtilisateurDAO utilisateurDAO = new UtilisateurDAO();

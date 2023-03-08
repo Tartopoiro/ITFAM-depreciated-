@@ -15,6 +15,18 @@ public class Adresse {
     private String complement;
 
 
+    public Adresse() {
+    }
+
+    public Adresse(Integer idadresse, String pays, String ville, String rue, String numero, String complement) {
+        this.idadresse = idadresse;
+        this.pays = pays;
+        this.ville = ville;
+        this.rue = rue;
+        this.numero = numero;
+        this.complement = complement;
+    }
+
     public Integer getIdadresse(){
         return idadresse;
     }

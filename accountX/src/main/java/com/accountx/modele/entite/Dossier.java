@@ -28,6 +28,7 @@ public class Dossier {
     }
 
 
+
     public Integer getIddossier(){
         return iddossier;
     }

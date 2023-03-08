@@ -53,9 +53,15 @@ public class DossierDAO extends DAOUtilitaire implements DAO<Dossier> {
     //permet de modifier les contacts du dossier
     @Override
     public boolean insert(Dossier obj) throws SQLException {
-        String requete = "call update_contact("+obj.getIddossier()+","+obj.getTel()+",\""+obj.getMail()+"\")";
         Connection connection = getConnection();
-        CallableStatement callableStatement = connection.prepareCall(requete);
+        CallableStatement callableStatement = connection.prepareCall("{call update_contact (?,?,?,?,?,?)}");
+        callableStatement.setObject(1,obj.getIddossier());
+        callableStatement.setObject(2,obj.getTel());
+        callableStatement.setObject(3,obj.getMail());
+        callableStatement.setObject(4,obj.getDenominationSociale());
+        callableStatement.setObject(5,obj.getFormeJuridique());
+        callableStatement.setObject(6,obj.getCommentaire());
+
         callableStatement.executeUpdate();
         callableStatement.close();
         connection.close();
