@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css?v=1">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/jquery-ui/themes/base/all.css?v=1">
 
-    <title>Dossier</title>
+    <title>AccountX</title>
 </head>
 
 
@@ -33,7 +33,7 @@
         <li class="nav-item dropdown">
             <a href="#" class="dropdown-toggle">Modifier</a>
             <ul class="dropdown-menu">
-                <li><a href="#">Représentant</a></li>
+                <li><a href="dossier/representant">Représentant</a></li>
                 <li><a href="dossier/info">Information Dossier</a></li>
             </ul>
         </li>

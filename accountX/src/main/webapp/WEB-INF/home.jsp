@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/jquery-ui/themes/base/all.css?v=1">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css?v=1">
 
-    <title>Home</title>
+    <title>AccountX</title>
 </head>
 
 
