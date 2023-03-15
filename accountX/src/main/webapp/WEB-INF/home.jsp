@@ -31,7 +31,7 @@
 
 
 <div class = "centeredContainer">
-    <h2>Bienvenue ${sessionScope.utilisateur.prenom}</h2><br />
+    <h2>Bienvenue ${sessionScope.utilisateur.prenom} ${sessionScope.utilisateur.nom}</h2><br />
     <div class="avertissement">-- N'utilisez pas cet outil pour faire votre comptabilité sans des connaissances avancées en système d'information et en comptabilité --</div>
 </div>
 <form method="post" action="home">

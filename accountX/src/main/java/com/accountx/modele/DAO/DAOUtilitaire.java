@@ -11,6 +11,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.Properties;
+import java.util.logging.Logger;
+
 //Classe Mere pour toutes les classes JavaBeanDAO pour ne pas récrire certaines méthodes récurrentes
 //Note pour plus tard : !!! personnalisation des exceptions !!!
 public class DAOUtilitaire {
@@ -35,6 +37,8 @@ public class DAOUtilitaire {
             url = properties.getProperty( "url" );
             user = properties.getProperty( "user" );
             mdp = properties.getProperty( "mdp" );
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.info("infodev --> "+user+" --- "+mdp+" --- "+url);
 
         } catch (IOException e){
             e.printStackTrace();

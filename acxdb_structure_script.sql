@@ -1,9 +1,11 @@
 
+drop database acxdb;
+
 -- -----------------------------------------------------
--- Schema fmwdb
+-- Schema acxdb
 -- -----------------------------------------------------
-CREATE DATABASE fmwdb;
-USE fmwdb ;
+CREATE DATABASE acxdb ;
+USE acxdb ;
 
 -- -----------------------------------------------------
 -- Table adresse
@@ -81,12 +83,12 @@ CREATE TABLE IF NOT EXISTS Journal (
 -- Table compte
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS compte (
-  idcompte INT PRIMARY KEY NOT NULL,
+  idcompte INT PRIMARY KEY NOT NULL auto_increment,
   numero_compte INT NOT NULL,
-  libelle VARCHAR(45) NOT NULL,
+  libelle VARCHAR(120) NOT NULL,
   dossier INT NOT NULL,
   solde DOUBLE NOT NULL,
-
+	
   FOREIGN KEY (dossier) REFERENCES dossier (iddossier)
 );
 
@@ -167,7 +169,7 @@ CREATE TABLE IF NOT EXISTS compte_auxiliaire (
   solde DOUBLE NOT NULL,
   
   FOREIGN KEY (compte_rattachement) REFERENCES compte (idcompte)
-    );
+);
 
 
 
@@ -200,12 +202,7 @@ CREATE TABLE IF NOT EXISTS ecriture_comptable (
 );
 
 
-DELIMITER //
-CREATE PROCEDURE read_utilisateur (input_mail varchar(80), input_mdp varchar(64))
-BEGIN
-	select * from utilisateur where (mail = input_mail AND mdp = input_mdp);
-END //
-DELIMITER ;
+
 
 
 
@@ -232,6 +229,13 @@ DELIMITER ;
 -- -----------------------------------------------------
 -- Routine - READ
 -- -----------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE read_utilisateur (input_mail varchar(80), input_mdp varchar(64))
+BEGIN
+	select * from utilisateur where (mail = input_mail AND mdp = input_mdp);
+END //
+DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE read_all (tableToRead varchar(30))

@@ -42,7 +42,6 @@
             <ul class="dropdown-menu">
                 <li><a href="#">Achat</a></li>
                 <li><a href="#">Vente</a></li>
-                <li><a href="#">Banque</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown">
