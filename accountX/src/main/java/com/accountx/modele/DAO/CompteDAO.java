@@ -1,6 +1,7 @@
 package com.accountx.modele.DAO;
 
 import com.accountx.modele.entite.Compte;
+import com.accountx.modele.entite.Dossier;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -30,4 +31,9 @@ public class CompteDAO extends DAOUtilitaire implements DAO<Compte> {
     public boolean delete(Compte obj) throws SQLException {
         return false;
     }
+
+    public Compte readWhereId(Compte objet, String id) throws SQLException, IllegalAccessException {
+        return super.readWhereId (objet, id);
+    }
+
 }

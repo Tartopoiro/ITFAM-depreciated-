@@ -185,7 +185,6 @@ footer{
 }
 
 /*-----Navbar-----------*/
-
 .navbar {
     display: flex;
     flex-direction: row;
@@ -218,9 +217,15 @@ footer{
     font-weight: bold;
     transition: color 0.2s ease-in-out;
 }
-.nav-item a:hover {
+.nav-item a:hover, .nav-item a:focus {
     color: #fff;
     background-color: #555;
+    outline: none;
+}
+
+.nav-item:hover .dropdown-menu, .nav-item:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
 }
 
 .dropdown-menu {
@@ -243,12 +248,15 @@ footer{
     color: #fff;
     text-decoration: none;
 }
-.dropdown-menu li a:hover {
+.dropdown-menu li a:hover, .dropdown-menu li a:focus {
     background-color: #555;
+    outline: none;
 }
-.dropdown:hover .dropdown-menu  {
-    opacity: 1;
-    visibility: visible;
+
+.nav-item:hover,
+.nav-item:focus-within {
+    background-color: #555;
+    color: #fff;
 }
 
 /*-----Home-------------*/

@@ -47,7 +47,7 @@
         <li class="nav-item dropdown">
             <a href="#" class="dropdown-toggle">Editer</a>
             <ul class="dropdown-menu">
-                <li><a href="#">Balance</a></li>
+                <li><a href="dossier/balance">Balance</a></li>
                 <li><a href="#">Journal/FEC</a></li>
                 <li><a href="#">Détail compte</a></li>
             </ul>

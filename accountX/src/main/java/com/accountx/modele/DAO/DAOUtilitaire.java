@@ -24,9 +24,6 @@ public class DAOUtilitaire {
         String mdp ="";
         String driver ="";
         String path = "../../../../../accountX/src/main/webapp/WEB-INF/DAO.properties";
-
-
-
         //chargement des informations du properties
         try {
             InputStream inputStream = new FileInputStream(path);
@@ -43,7 +40,6 @@ public class DAOUtilitaire {
         } catch (IOException e){
             e.printStackTrace();
         }
-
         try {
 
             Class.forName(driver);
@@ -51,8 +47,6 @@ public class DAOUtilitaire {
             throw new RuntimeException(e);
         }
         Connection connection = DriverManager.getConnection(url,user,mdp);
-
-
         return connection;
     }
 
@@ -62,12 +56,9 @@ public class DAOUtilitaire {
         return stmt.executeQuery();
     }
 
-
-
-
-    //Note : méthode ne fonctionnant que pour des tables à PK unique de type int
-
+    //Méthode retournant un objet de la table par son ID avec récursivité
     protected <T> T recursiveReadById (T objet, String id) throws SQLException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+        //Note : méthode ne fonctionnant que pour des tables à PK unique de type int
         //On récupère les attributs de l'objet
         Field[] fields = objet.getClass().getDeclaredFields();
         //On récupère l'objet dans la table recherché par son id
@@ -91,10 +82,33 @@ public class DAOUtilitaire {
             }
 
         }
-
-
         connection.close();
         return objet;
     }
-    
+
+    //Méthode retournant un objet de la table par son ID sans récursivité
+    protected <T> T readWhereId (T objet, String id) throws SQLException, IllegalAccessException {
+        //On récupère les attributs de l'objet
+        Field[] fields = objet.getClass().getDeclaredFields();
+        //On récupère l'objet dans la table recherché par son id
+        Connection connection = getConnection();
+        String table = objet.getClass().getAnnotation(Entite.class).table();
+        String requete = "call readWhereID (\""+table+"\","+id+");";
+        ResultSet resultSet = connection.prepareCall(requete).executeQuery();
+
+        //On affecte le resultset aux attributs de l'objet
+        if (resultSet.next()){
+            for (Field field : fields){
+                field.setAccessible(true);
+                field.set(objet, resultSet.getObject(field.getAnnotation(Attribut.class).colonne()));
+            }
+
+        }
+
+        return objet;
+    }
+
+
+
+
 }
