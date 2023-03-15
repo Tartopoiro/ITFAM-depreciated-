@@ -2,7 +2,7 @@
 
 DISCLAIMER : AccountX n'est pas en mesure de vous permettre de faire votre comptabilité à ce jour. Si vous souhaitez utiliser ce projet, aucun service d'assistance ne vous sera dédié. La fiabilité du projet ne peut être garantie. La sécurité du projet peut être compromise. 
 
-NOTE : AccountX.odt présente des informations supplémentaires sur la structure du projet et ses fonctionnalités. Il est conseillé de consulter ce document. 
+NOTE : AccountX.pptx présente des informations supplémentaires sur la structure du projet et ses fonctionnalités. Il est conseillé de consulter ce document. 
 
 
 
