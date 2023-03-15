@@ -64,11 +64,11 @@ CREATE TABLE IF NOT EXISTS dossier (
 -- -----------------------------------------------------
 -- Table Journal
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Journal (
-  idJournal INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS journal (
+  idjournal INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   dossier INT NOT NULL,
-  Type INT NOT NULL,
-  libellé VARCHAR(45) NOT NULL,
+  type INT NOT NULL,
+  libelle VARCHAR(45) NOT NULL,
   code VARCHAR(45) NOT NULL,
   commentaire VARCHAR(200) NULL,
   solde DOUBLE NOT NULL,
@@ -165,7 +165,6 @@ CREATE TABLE IF NOT EXISTS compte_auxiliaire (
   compte_rattachement INT NOT NULL,
   libelle VARCHAR(45) NOT NULL,
   type INT NOT NULL,
-  identifiant VARCHAR(10) NOT NULL,
   solde DOUBLE NOT NULL,
   
   FOREIGN KEY (compte_rattachement) REFERENCES compte (idcompte)
