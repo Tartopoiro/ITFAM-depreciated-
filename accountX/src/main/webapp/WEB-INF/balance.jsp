@@ -21,6 +21,7 @@
 </header>
 
 <main>
+    <a href="../dossier">Retour</a><a href="pdf">PDF</a>
     <h3>Balance des comptes de la société ${sessionScope.dossier.denominationSociale}:</h3>
 
     <table>
@@ -32,11 +33,13 @@
         </tr>
         </thead>
         <tbody>
+            <c:forEach items="${compte}" var="compte">
             <tr>
                 <td>${compte.numCompte}</td>
                 <td>${compte.libelle}</td>
                 <td>${compte.solde}</td>
             </tr>
+            </c:forEach>
         </tbody>
     </table>
 

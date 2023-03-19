@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -34,8 +36,6 @@ public class DAOUtilitaire {
             url = properties.getProperty( "url" );
             user = properties.getProperty( "user" );
             mdp = properties.getProperty( "mdp" );
-            Logger logger = Logger.getLogger(getClass().getName());
-            logger.info("infodev --> "+user+" --- "+mdp+" --- "+url);
 
         } catch (IOException e){
             e.printStackTrace();
@@ -108,6 +108,27 @@ public class DAOUtilitaire {
         return objet;
     }
 
+    //Méthode retournant toutes les valeurs d'un objet dans une liste pour lequelle la FK = un IDFK
+    protected <T> List<T> readWhereFkId(T objet, String fk, Integer fkid) throws SQLException, IllegalAccessException, InstantiationException {
+        Connection connection = getConnection();
+        String table = objet.getClass().getAnnotation(Entite.class).table();
+        List<T> listObject = new ArrayList<>();
+        CallableStatement callableStatement = connection.prepareCall("{call readWhereFKID (?,?,?)}");
+        callableStatement.setObject(1,table);
+        callableStatement.setObject(2,fk);
+        callableStatement.setObject(3,fkid);
+        ResultSet resultSet = callableStatement.executeQuery();
+        while (resultSet.next()){
+            T newObject = (T) objet.getClass().newInstance();
+            Field[] fields = newObject.getClass().getDeclaredFields();
+            for (Field field : fields){
+                field.setAccessible(true);
+                field.set(newObject, resultSet.getObject(field.getAnnotation(Attribut.class).colonne()));
+            }
+            listObject.add(newObject);
+        }
+        return listObject;
+    }
 
 
 

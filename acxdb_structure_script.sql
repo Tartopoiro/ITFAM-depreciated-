@@ -254,7 +254,17 @@ BEGIN
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
 END //
-DELIMITER ;nom
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE readWhereFKID (tableToRead VARCHAR(255), fk VARCHAR(255), idfk INT)
+BEGIN
+    SET @query = CONCAT('SELECT * FROM ', tableToRead, ' WHERE ', fk, ' = ', idfk);
+    PREPARE stmt FROM @query;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+END //
+DELIMITER ;
 -- -----------------------------------------------------
 -- Routine - UPDATE
 -- -----------------------------------------------------

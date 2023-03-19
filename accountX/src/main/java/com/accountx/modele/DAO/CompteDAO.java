@@ -36,4 +36,8 @@ public class CompteDAO extends DAOUtilitaire implements DAO<Compte> {
         return super.readWhereId (objet, id);
     }
 
+    public List<Compte> readWhereFkId(Compte objet, String fk, Integer fkid) throws SQLException, IllegalAccessException, InstantiationException {
+        return super.readWhereFkId(objet, fk, fkid);
+    }
+
 }
