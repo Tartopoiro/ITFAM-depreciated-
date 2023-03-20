@@ -40,16 +40,16 @@
         <li class="nav-item dropdown">
             <a href="#" class="dropdown-toggle">Saisir</a>
             <ul class="dropdown-menu">
-                <li><a href="#">Achat</a></li>
-                <li><a href="#">Vente</a></li>
+                <li><a href="dossier/achat">Achat</a></li>
+                <li><a href="#">Vente (WIP)</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown">
             <a href="#" class="dropdown-toggle">Editer</a>
             <ul class="dropdown-menu">
                 <li><a href="dossier/balance">Balance</a></li>
-                <li><a href="#">Journal/FEC</a></li>
-                <li><a href="#">Détail compte</a></li>
+                <li><a href="#">Journal/FEC (WIP)</a></li>
+                <li><a href="#">Détail compte (WIP)</a></li>
             </ul>
         </li>
     </ul>
