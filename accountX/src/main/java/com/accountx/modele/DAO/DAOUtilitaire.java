@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 //Classe Mere pour toutes les classes JavaBeanDAO pour ne pas récrire certaines méthodes récurrentes
 //Note pour plus tard : !!! personnalisation des exceptions !!!
@@ -46,7 +47,8 @@ public class DAOUtilitaire {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        Connection connection = DriverManager.getConnection(url,user,mdp);
+        Connection connection;
+        connection = DriverManager.getConnection(url,user,mdp);
         return connection;
     }
 
@@ -108,7 +110,7 @@ public class DAOUtilitaire {
         return objet;
     }
 
-    //Méthode retournant toutes les valeurs d'un objet dans une liste pour lequelle la FK = un IDFK
+    //Méthode retournant toutes les valeurs d'un objet dans une liste pour où la FK = IDFK
     protected <T> List<T> readWhereFkId(T objet, String fk, Integer fkid) throws SQLException, IllegalAccessException, InstantiationException {
         Connection connection = getConnection();
         String table = objet.getClass().getAnnotation(Entite.class).table();
@@ -129,6 +131,31 @@ public class DAOUtilitaire {
         }
         return listObject;
     }
+
+    //Méthode retournant toutes les valeurs d'un objet dans une liste pour où la FK = l'une des valeurs dans la liste
+    protected <T> List<T> readWhereFkInList(T objet, String fk, List<Integer> fkidList) throws SQLException,
+            IllegalAccessException, InstantiationException {
+        Connection connection = getConnection();
+        String table = objet.getClass().getAnnotation(Entite.class).table();
+        List<T> listObject = new ArrayList<>();
+        String fkidString = fkidList.stream().map(Object::toString).collect(Collectors.joining(", "));
+        CallableStatement callableStatement = connection.prepareCall("{call readWhereFKInList (?,?,?)}");
+        callableStatement.setObject(1,table);
+        callableStatement.setObject(2,fk);
+        callableStatement.setObject(3,fkidString);
+        ResultSet resultSet = callableStatement.executeQuery();
+        while (resultSet.next()){
+            T newObject = (T) objet.getClass().newInstance();
+            Field[] fields = newObject.getClass().getDeclaredFields();
+            for (Field field : fields){
+                field.setAccessible(true);
+                field.set(newObject, resultSet.getObject(field.getAnnotation(Attribut.class).colonne()));
+            }
+            listObject.add(newObject);
+        }
+        return listObject;
+    }
+
 
 
 

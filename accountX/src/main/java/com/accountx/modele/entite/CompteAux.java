@@ -1,7 +1,7 @@
 package com.accountx.modele.entite;
 @Entite(table = "compte_auxiliaire")
 public class CompteAux {
-    @Attribut(colonne = "idcompte_auxilaire")@PrimaryKey
+    @Attribut(colonne = "idcompte_auxiliaire")@PrimaryKey
     private Integer idcompteAux;
     @Attribut(colonne = "compte_rattachement")
     private Integer compteRattachement;

@@ -1,5 +1,6 @@
 package com.accountx.modele.DAO;
 
+import com.accountx.modele.entite.Compte;
 import com.accountx.modele.entite.CompteAux;
 
 import java.sql.SQLException;
@@ -29,5 +30,10 @@ public class CompteAuxDAO extends DAOUtilitaire implements DAO<CompteAux> {
     @Override
     public boolean delete(CompteAux obj) throws SQLException {
         return false;
+    }
+
+    public List<CompteAux> readWhereFkInList (CompteAux objet, String fk, List<Integer> fkidList) throws SQLException,
+            IllegalAccessException, InstantiationException {
+        return super.readWhereFkInList(objet, fk, fkidList);
     }
 }

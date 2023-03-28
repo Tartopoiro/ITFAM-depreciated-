@@ -46,7 +46,7 @@
                     <td><input class="entry" maxlength="45" id="dateFacture" name="dateFacture"  type="date"></td>
                 </tr>
                 <tr>
-                    <td><input class="form-submit" id="confirm" type="submit"></td>
+                    <td><input id="confirm" type="submit"></td>
                 </tr>
             </table>
         </fieldset>
@@ -58,5 +58,15 @@
         Auteur : Benjamin BASSET
     <p/>
 </footer>
+
+<script>
+    var data = ${compteAuxList} ;
+    $(document).ready(function() {
+        $("#fournisseur").autocomplete({
+            source: data
+        });
+    });
+</script>
+
 </body>
 </html>

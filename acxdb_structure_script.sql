@@ -265,6 +265,17 @@ BEGIN
     DEALLOCATE PREPARE stmt;
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE readWhereFKInList (tableToRead VARCHAR(255), fk VARCHAR(255), idfkList TEXT)
+BEGIN
+    SET @query = CONCAT('SELECT * FROM ', tableToRead, ' WHERE ', fk, ' IN (', idfkList, ')');
+    PREPARE stmt FROM @query;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+END //
+DELIMITER ;
+
 -- -----------------------------------------------------
 -- Routine - UPDATE
 -- -----------------------------------------------------

@@ -488,6 +488,9 @@ insert into compte values
 (null,809,'Contrepartie des engagements',1,0),
 (null,88,'Résultat en instance d’affectation',1,0),
 (null,89,'Bilan',1,0);
+DELETE FROM compte WHERE LENGTH(numero_compte) <= 2;
 
 
-
+insert into compte_auxiliaire values 
+(null,192,'Divers Fournisseurs',1,0),
+(null,204,'Divers Clients',2,0);
